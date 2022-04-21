@@ -18,7 +18,12 @@ static const Color refundFontColour = Color(0xff7B61FF);
 //All font Colour
   static const Color blackColour1 = Color(0xff000000);
 
+  //pending Font Colour
+  static const Color yellowColor = Color(0xffFFA800);
 
+static const Color navyBlueColor = Color(0xff172B85);
+
+static const Color whiteColor = Color(0xffFFFFFF);
   // text color swatches
   static const Map<int, Color> blackColorSwatch = {
     50: Color.fromRGBO(42, 42, 42, .1),
