@@ -9,6 +9,9 @@ static const Color greyFontColour = Color(0xff999999);
 //Active Font Color
 static const Color redColor = Color(0xffFF1800);
 
+//Active Font Color
+static const Color datePickerRangeColor = Color(0xffE64D3D);
+
 //Refund Font Colour
 static const Color refundFontColour = Color(0xff7B61FF);
 
@@ -24,6 +27,9 @@ static const Color refundFontColour = Color(0xff7B61FF);
 static const Color navyBlueColor = Color(0xff172B85);
 
 static const Color whiteColor = Color(0xffFFFFFF);
+
+static const Color orangeColor = Color(0xffFF6B00);
+
   // text color swatches
   static const Map<int, Color> blackColorSwatch = {
     50: Color.fromRGBO(42, 42, 42, .1),

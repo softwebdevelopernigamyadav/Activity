@@ -1,5 +1,7 @@
 import 'package:activity_app/config/router/router.dart';
 import 'package:activity_app/constants/app_constants.dart';
+import 'package:activity_app/pages/activity/filter_page/filter_page.dart';
+import 'package:activity_app/pages/activity/pending/pending.dart';
 import 'package:activity_app/pages/activity/widgets/refunded_page.dart';
 import 'package:activity_app/pages/activity/widgets/successful_page.dart';
 import 'package:activity_app/utils/palette.dart';
@@ -69,7 +71,6 @@ class _ActivityPageState extends State<ActivityPage> {
                         if (_isVisible)
                           Expanded(
                             child: Container(
-                              //margin: EdgeInsets.symmetric(vertical: 5.h),
                               padding: EdgeInsets.symmetric(horizontal: 20.w),
                               height: 30.h,
                               child: TextField(
@@ -114,6 +115,7 @@ class _ActivityPageState extends State<ActivityPage> {
                               onTap: () {
                                 setState(() {
                                   _isVisible = !_isVisible;
+                                  Navigate.to(const FilterPage());
                                 });
                               },
                               child: Image.asset(
@@ -872,9 +874,780 @@ class _ActivityPageState extends State<ActivityPage> {
               /*
               * Tab Bar 2 Coding
               * */
-              const Icon(Icons.done),
+
+              Column(
+                children: [
+                  Container(
+                    margin: EdgeInsets.symmetric(vertical: 10.h),
+                    padding: EdgeInsets.symmetric(horizontal: 20.w,),
+                    height: 35.h,
+                    child: TextField(
+                      decoration: InputDecoration(
+                        contentPadding: EdgeInsets.symmetric(
+                            horizontal: 10.w, vertical: 10.h),
+                        prefixIcon: const Icon(Icons.search),
+                        hintText: "Search",
+                        hintStyle: TextStyle(
+                            fontFamily: kRaleway,
+                            color: Palette.greyFontColour,
+                            fontSize: 15.sp),
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(30.0),
+                            borderSide: BorderSide.none),
+                        fillColor:
+                        Palette.greyFontColour.withOpacity(0.1),
+                        filled: true,
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: ListView(
+                      scrollDirection: Axis.vertical,
+                      shrinkWrap: true,
+                      children: [
+                        ColoredBox(
+                          color: Colors.white,
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(
+                                vertical: 10.h, horizontal: 10.w),
+                            child: Column(
+                              children: [
+                                Row(
+                                  mainAxisAlignment:
+                                  MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      "Today",
+                                      style: TextStyle(
+                                          fontFamily: kRaleway,
+                                          fontWeight: FontWeight.bold,
+                                          color: Palette.greyFontColour
+                                              .withOpacity(0.8),
+                                          fontSize: 12.sp),
+                                    ),
+                                    Text(
+                                      "£891.30",
+                                      style: TextStyle(
+                                          fontFamily: kRaleway,
+                                          fontWeight: FontWeight.bold,
+                                          color: Palette.greyFontColour
+                                              .withOpacity(0.8),
+                                          fontSize: 12.sp),
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(height: 10.h),
+                                Padding(
+                                  padding: EdgeInsets.only(
+                                    top: 5.h,
+                                  ),
+                                  child: Row(
+                                    children: [
+                                      Container(
+                                        padding: const EdgeInsets.all(10),
+                                        decoration: BoxDecoration(
+                                          shape: BoxShape.circle,
+                                          color: Colors.grey.shade200,
+                                        ),
+                                        child: Image.asset(
+                                            "assets/images/email.png"),
+                                      ),
+                                      SizedBox(
+                                        width: 5.w,
+                                      ),
+                                      Text(
+                                        "#80138",
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontFamily: kRaleway,
+                                            fontSize: 12.sp),
+                                      ),
+                                      const Spacer(),
+                                      Text(
+                                        "£89.00",
+                                        style: TextStyle(
+                                            fontFamily: kRaleway,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 12.sp),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Row(
+                                  children: [
+                                    Padding(
+                                        padding: EdgeInsets.only(left: 40.w),
+                                        child: Text.rich(TextSpan(children: [
+                                          TextSpan(
+                                            text: "E-mail Link",
+                                            style: TextStyle(
+                                                color: Palette.greyFontColour,
+                                                fontFamily: kRaleway,
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 11.sp),
+                                          ),
+                                          const TextSpan(
+                                              text: "  12:03",
+                                              style: TextStyle(
+                                                color: Palette.greyFontColour,
+                                                fontFamily: kRaleway,
+                                              ))
+                                        ]))),
+                                    const Spacer(),
+                                    GestureDetector(
+                                      onTap: () {
+                                        Navigate.to(const PendingPage());
+                                      },
+                                      child: Container(
+                                        padding: EdgeInsets.symmetric(
+                                            horizontal: 5.w),
+                                        decoration: BoxDecoration(
+                                            borderRadius:
+                                            BorderRadius.circular(30),
+                                            color: Palette.yellowColor
+                                                .withOpacity(0.1)),
+                                        child: Text(
+                                          "Pending",
+                                          style: TextStyle(
+                                              color:
+                                              Palette.yellowColor,
+                                              fontFamily: kRaleway,
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 12.sp),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(height: 20.h),
+                                Padding(
+                                  padding: EdgeInsets.only(
+                                    top: 5.h,
+                                  ),
+                                  child: Row(
+                                    children: [
+                                      Container(
+                                        padding: const EdgeInsets.all(7),
+                                        decoration: BoxDecoration(
+                                          shape: BoxShape.circle,
+                                          color: Colors.grey.shade200,
+                                        ),
+                                        child: Image.asset(
+                                            "assets/images/Cash.png"),
+                                      ),
+                                      SizedBox(
+                                        width: 5.w,
+                                      ),
+                                      Text(
+                                        "#80138",
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontFamily: kRaleway,
+                                            fontSize: 12.sp),
+                                      ),
+                                      const Spacer(),
+                                      Text(
+                                        "£89.00",
+                                        style: TextStyle(
+                                            fontFamily: kRaleway,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 12.sp),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Row(
+                                  children: [
+                                    Padding(
+                                        padding: EdgeInsets.only(left: 40.w),
+                                        child: Text.rich(TextSpan(children: [
+                                          TextSpan(
+                                            text: "Cash",
+                                            style: TextStyle(
+                                                color: Palette.greyFontColour,
+                                                fontFamily: kRaleway,
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 11.sp),
+                                          ),
+                                          const TextSpan(
+                                              text: "  12:03",
+                                              style: TextStyle(
+                                                color: Palette.greyFontColour,
+                                                fontFamily: kRaleway,
+                                              ))
+                                        ]))),
+                                    const Spacer(),
+                                    GestureDetector(
+                                      onTap: () {
+                                        Navigate.to(const PendingPage());
+                                      },
+                                      child: Container(
+                                        padding: EdgeInsets.symmetric(
+                                            horizontal: 10.w),
+                                        decoration: BoxDecoration(
+                                            borderRadius:
+                                            BorderRadius.circular(30),
+                                            color: Palette.greyFontColour
+                                                .withOpacity(0.1)),
+                                        child: Text(
+                                          "Canceled",
+                                          style: TextStyle(
+                                              color:
+                                              Palette.greyFontColour,
+                                              fontFamily: kRaleway,
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 12.sp),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(height: 20.h),
+                                Padding(
+                                  padding: EdgeInsets.only(
+                                    top: 5.h,
+                                  ),
+                                  child: Row(
+                                    children: [
+                                      Container(
+                                        padding: const EdgeInsets.all(10),
+                                        decoration: BoxDecoration(
+                                          shape: BoxShape.circle,
+                                          color: Colors.grey.shade200,
+                                        ),
+                                        child: Image.asset(
+                                            "assets/images/sms.png"),
+                                      ),
+                                      SizedBox(
+                                        width: 5.w,
+                                      ),
+                                      Text(
+                                        "#80138",
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontFamily: kRaleway,
+                                            fontSize: 12.sp),
+                                      ),
+                                      const Spacer(),
+                                      Text(
+                                        "£89.00",
+                                        style: TextStyle(
+                                            fontFamily: kRaleway,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 12.sp),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Row(
+                                  children: [
+                                    Padding(
+                                        padding: EdgeInsets.only(left: 40.w),
+                                        child: Text.rich(TextSpan(children: [
+                                          TextSpan(
+                                            text: "Sms Link ",
+                                            style: TextStyle(
+                                                color: Palette.greyFontColour,
+                                                fontFamily: kRaleway,
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 11.sp),
+                                          ),
+                                          const TextSpan(
+                                              text: "  12:03",
+                                              style: TextStyle(
+                                                color: Palette.greyFontColour,
+                                                fontFamily: kRaleway,
+                                              ))
+                                        ]))),
+                                    const Spacer(),
+                                    InkWell(
+                                      onTap: () {
+                                        Navigate.to(const PendingPage());
+                                      },
+                                      child: Container(
+                                        padding: EdgeInsets.symmetric(
+                                            horizontal: 5.w),
+                                        decoration: BoxDecoration(
+                                            borderRadius:
+                                            BorderRadius.circular(30),
+                                            color: Palette.orangeColor
+                                                .withOpacity(0.1)),
+                                        child: Text(
+                                          "Resent",
+                                          style: TextStyle(
+                                              color:
+                                              Palette.orangeColor,
+                                              fontFamily: kRaleway,
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 12.sp),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(height: 20.h),
+                                Padding(
+                                  padding: EdgeInsets.only(
+                                    top: 5.h,
+                                  ),
+                                  child: Row(
+                                    children: [
+                                      Container(
+                                        padding: const EdgeInsets.all(10),
+                                        decoration: BoxDecoration(
+                                          shape: BoxShape.circle,
+                                          color: Colors.grey.shade200,
+                                        ),
+                                        child: Image.asset(
+                                            "assets/images/card.png"),
+                                      ),
+                                      SizedBox(
+                                        width: 5.w,
+                                      ),
+                                      Text(
+                                        "#80138",
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontFamily: kRaleway,
+                                            fontSize: 12.sp),
+                                      ),
+                                      const Spacer(),
+                                      Text(
+                                        "£89.00",
+                                        style: TextStyle(
+                                            fontFamily: kRaleway,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 12.sp),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Row(
+                                  children: [
+                                    Padding(
+                                        padding: EdgeInsets.only(left: 40.w),
+                                        child: Text.rich(TextSpan(children: [
+                                          TextSpan(
+                                            text: "Card",
+                                            style: TextStyle(
+                                                color: Palette.greyFontColour,
+                                                fontFamily: kRaleway,
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 11.sp),
+                                          ),
+                                          const TextSpan(
+                                              text: "  12:03",
+                                              style: TextStyle(
+                                                color: Palette.greyFontColour,
+                                                fontFamily: kRaleway,
+                                              ))
+                                        ]))),
+                                    const Spacer(),
+                                    GestureDetector(
+                                      onTap:(){
+                                        Navigate.to(const PendingPage());
+                                      },
+                                      child: Container(
+                                        padding: EdgeInsets.symmetric(
+                                            horizontal: 10.w),
+                                        decoration: BoxDecoration(
+                                            borderRadius:
+                                            BorderRadius.circular(30),
+                                            color: Palette.yellowColor
+                                                .withOpacity(0.1)),
+                                        child: Text(
+                                          "Pending",
+                                          style: TextStyle(
+                                              color: Palette.yellowColor,
+                                              fontFamily: kRaleway,
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 12.sp),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(height: 20.h),
+                              ],
+                            ),
+                          ),
+                        ),
+                        SizedBox(height: 10.h),
+                        ColoredBox(
+                          color: Colors.white,
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(
+                                vertical: 10.h, horizontal: 10.w),
+                            child: Column(
+                              children: [
+                                Row(
+                                  mainAxisAlignment:
+                                  MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      "Today",
+                                      style: TextStyle(
+                                          fontFamily: kRaleway,
+                                          fontWeight: FontWeight.bold,
+                                          color: Palette.greyFontColour
+                                              .withOpacity(0.8),
+                                          fontSize: 12.sp),
+                                    ),
+                                    Text(
+                                      "£891.30",
+                                      style: TextStyle(
+                                          fontFamily: kRaleway,
+                                          fontWeight: FontWeight.bold,
+                                          color: Palette.greyFontColour
+                                              .withOpacity(0.8),
+                                          fontSize: 12.sp),
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(height: 10.h),
+                                Padding(
+                                  padding: EdgeInsets.only(
+                                    top: 5.h,
+                                  ),
+                                  child: Row(
+                                    children: [
+                                      Container(
+                                        padding: const EdgeInsets.all(10),
+                                        decoration: BoxDecoration(
+                                          shape: BoxShape.circle,
+                                          color: Colors.grey.shade200,
+                                        ),
+                                        child: Image.asset(
+                                            "assets/images/email.png"),
+                                      ),
+                                      SizedBox(
+                                        width: 5.w,
+                                      ),
+                                      Text(
+                                        "#80138",
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontFamily: kRaleway,
+                                            fontSize: 12.sp),
+                                      ),
+                                      const Spacer(),
+                                      Text(
+                                        "£89.00",
+                                        style: TextStyle(
+                                            fontFamily: kRaleway,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 12.sp),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Row(
+                                  children: [
+                                    Padding(
+                                        padding: EdgeInsets.only(left: 40.w),
+                                        child: Text.rich(TextSpan(children: [
+                                          TextSpan(
+                                            text: "E-mail Link",
+                                            style: TextStyle(
+                                                color: Palette.greyFontColour,
+                                                fontFamily: kRaleway,
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 11.sp),
+                                          ),
+                                          const TextSpan(
+                                              text: "  12:03",
+                                              style: TextStyle(
+                                                color: Palette.greyFontColour,
+                                                fontFamily: kRaleway,
+                                              ))
+                                        ]))),
+                                    const Spacer(),
+                                    GestureDetector(
+                                      onTap: () {
+                                        Navigate.to(const SuccessfulPage());
+                                      },
+                                      child: Container(
+                                        padding: EdgeInsets.symmetric(
+                                            horizontal: 5.w),
+                                        decoration: BoxDecoration(
+                                            borderRadius:
+                                            BorderRadius.circular(30),
+                                            color: Palette.yellowColor
+                                                .withOpacity(0.1)),
+                                        child: Text(
+                                          "Pending",
+                                          style: TextStyle(
+                                              color:
+                                              Palette.yellowColor,
+                                              fontFamily: kRaleway,
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 12.sp),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(height: 20.h),
+                                Padding(
+                                  padding: EdgeInsets.only(
+                                    top: 5.h,
+                                  ),
+                                  child: Row(
+                                    children: [
+                                      Container(
+                                        padding: const EdgeInsets.all(7),
+                                        decoration: BoxDecoration(
+                                          shape: BoxShape.circle,
+                                          color: Colors.grey.shade200,
+                                        ),
+                                        child: Image.asset(
+                                            "assets/images/Cash.png"),
+                                      ),
+                                      SizedBox(
+                                        width: 5.w,
+                                      ),
+                                      Text(
+                                        "#80138",
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontFamily: kRaleway,
+                                            fontSize: 12.sp),
+                                      ),
+                                      const Spacer(),
+                                      Text(
+                                        "£89.00",
+                                        style: TextStyle(
+                                            fontFamily: kRaleway,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 12.sp),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Row(
+                                  children: [
+                                    Padding(
+                                        padding: EdgeInsets.only(left: 40.w),
+                                        child: Text.rich(TextSpan(children: [
+                                          TextSpan(
+                                            text: "Cash",
+                                            style: TextStyle(
+                                                color: Palette.greyFontColour,
+                                                fontFamily: kRaleway,
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 11.sp),
+                                          ),
+                                          const TextSpan(
+                                              text: "  12:03",
+                                              style: TextStyle(
+                                                color: Palette.greyFontColour,
+                                                fontFamily: kRaleway,
+                                              ))
+                                        ]))),
+                                    const Spacer(),
+                                    GestureDetector(
+                                      onTap: () {
+                                        Navigate.to(const SuccessfulPage());
+                                      },
+                                      child: Container(
+                                        padding: EdgeInsets.symmetric(
+                                            horizontal: 10.w),
+                                        decoration: BoxDecoration(
+                                            borderRadius:
+                                            BorderRadius.circular(30),
+                                            color: Palette.greyFontColour
+                                                .withOpacity(0.1)),
+                                        child: Text(
+                                          "Canceled",
+                                          style: TextStyle(
+                                              color:
+                                              Palette.greyFontColour,
+                                              fontFamily: kRaleway,
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 12.sp),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(height: 20.h),
+                                Padding(
+                                  padding: EdgeInsets.only(
+                                    top: 5.h,
+                                  ),
+                                  child: Row(
+                                    children: [
+                                      Container(
+                                        padding: const EdgeInsets.all(10),
+                                        decoration: BoxDecoration(
+                                          shape: BoxShape.circle,
+                                          color: Colors.grey.shade200,
+                                        ),
+                                        child: Image.asset(
+                                            "assets/images/sms.png"),
+                                      ),
+                                      SizedBox(
+                                        width: 5.w,
+                                      ),
+                                      Text(
+                                        "#80138",
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontFamily: kRaleway,
+                                            fontSize: 12.sp),
+                                      ),
+                                      const Spacer(),
+                                      Text(
+                                        "£89.00",
+                                        style: TextStyle(
+                                            fontFamily: kRaleway,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 12.sp),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Row(
+                                  children: [
+                                    Padding(
+                                        padding: EdgeInsets.only(left: 40.w),
+                                        child: Text.rich(TextSpan(children: [
+                                          TextSpan(
+                                            text: "Sms Link ",
+                                            style: TextStyle(
+                                                color: Palette.greyFontColour,
+                                                fontFamily: kRaleway,
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 11.sp),
+                                          ),
+                                          const TextSpan(
+                                              text: "  12:03",
+                                              style: TextStyle(
+                                                color: Palette.greyFontColour,
+                                                fontFamily: kRaleway,
+                                              ))
+                                        ]))),
+                                    const Spacer(),
+                                    InkWell(
+                                      onTap: () {
+                                        Navigate.to(const SuccessfulPage());
+                                      },
+                                      child: Container(
+                                        padding: EdgeInsets.symmetric(
+                                            horizontal: 5.w),
+                                        decoration: BoxDecoration(
+                                            borderRadius:
+                                            BorderRadius.circular(30),
+                                            color: Palette.orangeColor
+                                                .withOpacity(0.1)),
+                                        child: Text(
+                                          "Resent",
+                                          style: TextStyle(
+                                              color:
+                                              Palette.orangeColor,
+                                              fontFamily: kRaleway,
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 12.sp),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(height: 20.h),
+                                Padding(
+                                  padding: EdgeInsets.only(
+                                    top: 5.h,
+                                  ),
+                                  child: Row(
+                                    children: [
+                                      Container(
+                                        padding: const EdgeInsets.all(10),
+                                        decoration: BoxDecoration(
+                                          shape: BoxShape.circle,
+                                          color: Colors.grey.shade200,
+                                        ),
+                                        child: Image.asset(
+                                            "assets/images/card.png"),
+                                      ),
+                                      SizedBox(
+                                        width: 5.w,
+                                      ),
+                                      Text(
+                                        "#80138",
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontFamily: kRaleway,
+                                            fontSize: 12.sp),
+                                      ),
+                                      const Spacer(),
+                                      Text(
+                                        "£89.00",
+                                        style: TextStyle(
+                                            fontFamily: kRaleway,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 12.sp),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Row(
+                                  children: [
+                                    Padding(
+                                        padding: EdgeInsets.only(left: 40.w),
+                                        child: Text.rich(TextSpan(children: [
+                                          TextSpan(
+                                            text: "Card",
+                                            style: TextStyle(
+                                                color: Palette.greyFontColour,
+                                                fontFamily: kRaleway,
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 11.sp),
+                                          ),
+                                          const TextSpan(
+                                              text: "  12:03",
+                                              style: TextStyle(
+                                                color: Palette.greyFontColour,
+                                                fontFamily: kRaleway,
+                                              ))
+                                        ]))),
+                                    const Spacer(),
+                                    GestureDetector(
+                                      onTap:(){
+                                        Navigate.to(const RefundedPage());
+                                      },
+                                      child: Container(
+                                        padding: EdgeInsets.symmetric(
+                                            horizontal: 10.w),
+                                        decoration: BoxDecoration(
+                                            borderRadius:
+                                            BorderRadius.circular(30),
+                                            color: Palette.yellowColor
+                                                .withOpacity(0.1)),
+                                        child: Text(
+                                          "Pending",
+                                          style: TextStyle(
+                                              color: Palette.yellowColor,
+                                              fontFamily: kRaleway,
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 12.sp),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(height: 20.h),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  )
+                ],
+              ),
             ],
-          )),
+          )
+      ),
     );
   }
 }

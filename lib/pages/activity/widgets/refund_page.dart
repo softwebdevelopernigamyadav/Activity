@@ -1,7 +1,9 @@
 import 'package:activity_app/config/router/router.dart';
 import 'package:activity_app/constants/app_constants.dart';
 import 'package:activity_app/pages/activity/widgets/partial_refunded_page.dart';
+import 'package:activity_app/pages/activity/widgets/refund_successful_page.dart';
 import 'package:activity_app/utils/palette.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -13,6 +15,23 @@ class RefundPage extends StatefulWidget {
 }
 
 class _RefundPageState extends State<RefundPage> {
+  final _keys = [
+    "7",
+    "8",
+    "9",
+    "4",
+    "5",
+    "6",
+    "1",
+    "2",
+    "3",
+    "00",
+    "0",
+    "C",
+  ];
+
+  final TextEditingController _textController = TextEditingController();
+
   int index = 0;
 
   @override
@@ -27,7 +46,7 @@ class _RefundPageState extends State<RefundPage> {
           backgroundColor: Colors.white,
           shadowColor: Palette.greyFontColour.withOpacity(0.2),
           title: Text(
-            "Receipt",
+            "Refund",
             style: TextStyle(
                 color: Palette.blackColour1,
                 fontFamily: kRaleway,
@@ -66,64 +85,114 @@ class _RefundPageState extends State<RefundPage> {
              * Tab bar 1 Page Content
              *
              * */
-            ListView(
-              scrollDirection: Axis.vertical,
+            Column(
               children: [
-                Container(),
-                SizedBox(
-                  height: 300.h,
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: 0.1.sh),
+                  child: TextFormField(
+                    textAlign: TextAlign.center,
+                    readOnly: true,
+                    controller: _textController,
+                    decoration: InputDecoration(
+                        border: InputBorder.none,
+                        hintText: '-£0.00',
+                        hintStyle: TextStyle(
+                            color: Palette.redColor.withOpacity(0.2),
+                            fontSize: 25.sp,
+                            fontWeight: FontWeight.bold)),
+                  ),
                 ),
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      "23 Jan 2022 15:06",
-                      style: TextStyle(
-                          color: Palette.greyFontColour,
-                          fontWeight: FontWeight.bold,
-                          fontFamily: kRaleway,
-                          fontSize: 12.sp),
-                    ),
-                    Container(
-                      margin: EdgeInsets.only(left: 100.w),
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 3.w, vertical: 1.h),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5),
-                        border: Border.all(color: Palette.greyFontColour),
-                      ),
-                      child: Text(
-                        "VISA",
+                Padding(
+                  padding:
+                      EdgeInsets.symmetric(horizontal: 10.w, vertical: 20.h),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "23 Jan 2022 15:06",
                         style: TextStyle(
-                            color: Palette.navyBlueColor.withOpacity(0.8),
+                            color: Palette.greyFontColour,
                             fontWeight: FontWeight.bold,
                             fontFamily: kRaleway,
                             fontSize: 12.sp),
                       ),
-                    ),
-                    Text("Ending xxxx-8903",
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: Palette.greyFontColour,
-                            fontFamily: kRaleway,
-                            fontSize: 12.sp))
-                  ],
-                ),
-                GridView.builder(
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 3,
+                      Container(
+                        margin: EdgeInsets.only(left: 100.w),
+                        padding: EdgeInsets.symmetric(
+                            horizontal: 3.w, vertical: 1.h),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(5),
+                          border: Border.all(color: Palette.greyFontColour),
+                        ),
+                        child: Text(
+                          "VISA",
+                          style: TextStyle(
+                              color: Palette.navyBlueColor.withOpacity(0.8),
+                              fontWeight: FontWeight.bold,
+                              fontFamily: kRaleway,
+                              fontSize: 12.sp),
+                        ),
+                      ),
+                      Text("Ending xxxx-8903",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Palette.greyFontColour,
+                              fontFamily: kRaleway,
+                              fontSize: 12.sp))
+                    ],
                   ),
-                  itemBuilder: (_, index) {
-                    return TextButton(
-                      onPressed: (){},
-                      child: Text("${12-index}"),
-                    );
-                  },
-                  itemCount: 12,
-                )
+                ),
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.all(5.0),
+                    child: LayoutBuilder(
+                      builder: (_, constraints) {
+                        final height = (constraints.maxHeight - 80) / 4;
+                        final width = (constraints.maxWidth - 50) / 3;
+                        return Wrap(
+                          runSpacing: 10,
+                          spacing: 10,
+                          children: _keys.map((key) {
+                            return _button(
+                                label: key,
+                                width: width,
+                                height: height,
+                                onPressed: () {
+                                  if (key != 'C') {
+                                    _textController.text =
+                                        _textController.text + key;
+                                  } else {
+                                    _textController.clear();
+                                  }
+                                });
+                          }).toList(),
+                        );
+                      },
+                    ),
+                  ),
+                ),
+                Container(
+                  width: 1.sw,
+                  margin: EdgeInsets.symmetric(horizontal: 20.w,vertical: 10.h),
+                  padding: EdgeInsets.symmetric(vertical: 3.h),
+                  decoration: BoxDecoration(
+                      color: Palette.redColor.withOpacity(0.7),
+                      borderRadius: BorderRadius.circular(20)),
+                  child: TextButton(
+                    onPressed: () {
+                      Navigate.to(const RefundSuccessfulPage());
+                    },
+                    child: Text(
+                      "Refund",
+                      style: TextStyle(
+                          color: Palette.whiteColor,
+                          fontFamily: kRaleway,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16.sp),
+                    ),
+                  ),
+                ),
               ],
             ),
             /*
@@ -563,6 +632,38 @@ class _RefundPageState extends State<RefundPage> {
             )
           ],
         ),
+      ),
+    );
+  }
+
+  Widget _button(
+      {double height, double width, String label, VoidCallback onPressed}) {
+    return Container(
+      height: height,
+      width: width,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(15),
+        color: Colors.white,
+        border: Border.all(color: Palette.greyFontColour.withOpacity(0.2)),
+        // boxShadow: [
+        //   BoxShadow(
+        //     color: Colors.grey.shade200,
+        //     blurRadius: 10,
+        //   )
+        // ],
+      ),
+      child: TextButton(
+        child: label != "C"
+            ? Text(
+                label,
+                style:
+                    TextStyle(color: Palette.greyFontColour, fontSize: 18.sp),
+              )
+            : const Icon(
+                Icons.backspace_outlined,
+                color: Palette.greyFontColour,
+              ),
+        onPressed: onPressed,
       ),
     );
   }
