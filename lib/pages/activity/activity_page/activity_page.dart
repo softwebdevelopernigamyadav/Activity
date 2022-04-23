@@ -153,6 +153,46 @@ class _ActivityPageState extends State<ActivityPage> {
                     ),
                   ),
                   SizedBox(height: 10.h),
+                  Row(
+                      children:[
+                        SizedBox(width: 10.h),
+                        Container(
+                          alignment: Alignment.topCenter,
+                          margin: EdgeInsets.only(bottom: 5.h),
+                          padding: EdgeInsets.symmetric(vertical: 5.h),
+                          child: Chip(
+                            backgroundColor: Palette.redColor.withOpacity(0.1),
+                            label:  Text("Cash",style: TextStyle(color:Palette.datePickerRangeColor.withOpacity(0.9)),),
+                            onDeleted: (){},
+                            deleteIcon:  Icon(Icons.cancel,color:Palette.datePickerRangeColor.withOpacity(0.8)),
+                          ),
+                        ),
+                        SizedBox(width: 10.h),
+                        Container(
+                            padding: EdgeInsets.symmetric(vertical: 5.h),
+                          alignment: Alignment.topCenter,
+                          margin: EdgeInsets.only(bottom: 5.h),
+                          child: Chip(
+                            backgroundColor: Palette.redColor.withOpacity(0.1),
+                            label:  Text("Card",style: TextStyle(color:Palette.datePickerRangeColor.withOpacity(0.9)),),
+                            onDeleted: (){},
+                            deleteIcon:  Icon(Icons.cancel,color:Palette.datePickerRangeColor.withOpacity(0.8)),
+                          ),
+                        ),
+                        SizedBox(width: 10.h),
+                        Container(
+                            padding: EdgeInsets.symmetric(vertical: 5.h),
+                          alignment: Alignment.topCenter,
+                          margin: EdgeInsets.only(bottom: 5.h),
+                          child: Chip(
+                            backgroundColor: Palette.redColor.withOpacity(0.1),
+                            label:  Text("12/12/2021 to 01/01/2020",style: TextStyle(color:Palette.datePickerRangeColor.withOpacity(0.9)),),
+                            onDeleted: (){},
+                            deleteIcon:  Icon(Icons.cancel,color:Palette.datePickerRangeColor.withOpacity(0.8)),
+                          ),
+                        ),
+                      ]
+                  ),
                   Expanded(
                     child: ListView(
                       scrollDirection: Axis.vertical,

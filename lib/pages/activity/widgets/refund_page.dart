@@ -90,6 +90,10 @@ class _RefundPageState extends State<RefundPage> {
                 Padding(
                   padding: EdgeInsets.symmetric(vertical: 0.1.sh),
                   child: TextFormField(
+                    style: TextStyle(
+                        color: Palette.redColor.withOpacity(0.8),
+                        fontSize: 25.sp,
+                        fontWeight: FontWeight.bold),
                     textAlign: TextAlign.center,
                     readOnly: true,
                     controller: _textController,
@@ -647,12 +651,6 @@ class _RefundPageState extends State<RefundPage> {
         borderRadius: BorderRadius.circular(15),
         color: Colors.white,
         border: Border.all(color: Palette.greyFontColour.withOpacity(0.2)),
-        // boxShadow: [
-        //   BoxShadow(
-        //     color: Colors.grey.shade200,
-        //     blurRadius: 10,
-        //   )
-        // ],
       ),
       child: TextButton(
         child: label != "C"
