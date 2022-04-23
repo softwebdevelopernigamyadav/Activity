@@ -1,6 +1,7 @@
 import 'package:activity_app/config/router/router.dart';
 import 'package:activity_app/constants/app_constants.dart';
 import 'package:activity_app/pages/activity/activity_page/activity_page.dart';
+import 'package:activity_app/pages/activity/widgets/refund_page.dart';
 import 'package:activity_app/pages/activity/widgets/refunded_page.dart';
 import 'package:activity_app/utils/palette.dart';
 import 'package:flutter/material.dart';
@@ -589,7 +590,9 @@ class _SuccessfulPageState extends State<SuccessfulPage> {
                       borderRadius: BorderRadius.circular(20)
                   ),
                   child: TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigate.to(const RefundPage());
+                    },
                     child: Text("E-mail Receipt", style: TextStyle(
                         color: Palette.whiteColor,
                         fontFamily: kRaleway,
@@ -600,7 +603,7 @@ class _SuccessfulPageState extends State<SuccessfulPage> {
                 Align(
                   alignment: Alignment.center,
                   child: TextButton(onPressed: (){
-                    Navigate.to(const RefundedPage());
+                    Navigate.to(const RefundPage());
                   },
                       child: Text("Refund",style: TextStyle(
                         decoration: TextDecoration.underline,

@@ -1,6 +1,6 @@
 import 'package:activity_app/config/router/router.dart';
 import 'package:activity_app/constants/app_constants.dart';
-import 'package:activity_app/pages/activity/widgets/partial_refunded_page.dart';
+import 'package:activity_app/pages/activity/activity_page/activity_page.dart';
 import 'package:activity_app/pages/activity/widgets/refund_successful_page.dart';
 import 'package:activity_app/utils/palette.dart';
 import 'package:flutter/cupertino.dart';
@@ -55,7 +55,7 @@ class _RefundPageState extends State<RefundPage> {
           ),
           leading: IconButton(
               onPressed: () {
-                Navigate.to(const PartialRefundedPage());
+                Navigate.to(const ActivityPage());
               },
               icon: const Icon(
                 Icons.keyboard_arrow_left,
@@ -148,7 +148,7 @@ class _RefundPageState extends State<RefundPage> {
                     padding: const EdgeInsets.all(5.0),
                     child: LayoutBuilder(
                       builder: (_, constraints) {
-                        final height = (constraints.maxHeight - 80) / 4;
+                        final height = (constraints.maxHeight - 40) / 4;
                         final width = (constraints.maxWidth - 50) / 3;
                         return Wrap(
                           runSpacing: 10,
@@ -611,7 +611,9 @@ class _RefundPageState extends State<RefundPage> {
                             color: Palette.redColor.withOpacity(0.7),
                             borderRadius: BorderRadius.circular(20)),
                         child: TextButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigate.to(const RefundSuccessfulPage());
+                          },
                           child: Text(
                             "Refund",
                             style: TextStyle(

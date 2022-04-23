@@ -57,29 +57,24 @@ class _RefundedPageState extends State<RefundedPage> {
                         fontSize: 20.sp),
                   ),
                 ),
-                GestureDetector(
-                  onTap: (){
-                    Navigate.to(const PartialRefundedPage());
-                  },
-                  child: Align(
-                    alignment: Alignment.center,
-                    child:Container(
-                      margin: EdgeInsets.symmetric(vertical: 10.h),
-                      padding:
-                      EdgeInsets.symmetric(horizontal: 10.w,vertical: 2.h),
-                      decoration: BoxDecoration(
-                          borderRadius:
-                          BorderRadius.circular(30),
-                          color: Palette.refundFontColour
-                              .withOpacity(0.1)),
-                      child: Text(
-                        "Refunded",
-                        style: TextStyle(
-                            color: Palette.refundFontColour,
-                            fontFamily: kRaleway,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 12.sp),
-                      ),
+                Align(
+                  alignment: Alignment.center,
+                  child:Container(
+                    margin: EdgeInsets.symmetric(vertical: 10.h),
+                    padding:
+                    EdgeInsets.symmetric(horizontal: 10.w,vertical: 2.h),
+                    decoration: BoxDecoration(
+                        borderRadius:
+                        BorderRadius.circular(30),
+                        color: Palette.refundFontColour
+                            .withOpacity(0.1)),
+                    child: Text(
+                      "Refunded",
+                      style: TextStyle(
+                          color: Palette.refundFontColour,
+                          fontFamily: kRaleway,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 12.sp),
                     ),
                   ),
                 ),

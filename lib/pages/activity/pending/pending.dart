@@ -2,7 +2,7 @@ import 'package:activity_app/config/router/router.dart';
 import 'package:activity_app/constants/app_constants.dart';
 import 'package:activity_app/pages/activity/activity_page/activity_page.dart';
 import 'package:activity_app/pages/activity/pending/cancel_receipt_page.dart';
-import 'package:activity_app/pages/activity/widgets/refunded_page.dart';
+import 'package:activity_app/pages/activity/pending/payment_link.dart';
 import 'package:activity_app/utils/palette.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -717,7 +717,8 @@ class _PendingPageState extends State<PendingPage> {
                           content: Text(
                             "This action Cannot be undone ",
                             style: TextStyle(
-                                color: Palette.blackColour1,
+                              fontWeight: FontWeight.w500,
+                                color: Colors.black,
                                 fontFamily: kRaleway,
                                 fontSize: 15.sp),
                           ),
@@ -727,21 +728,21 @@ class _PendingPageState extends State<PendingPage> {
                                 Navigator.of(ctx).pop();
                               },
                               child: Text("Cancel",style: TextStyle(
-                                  fontWeight: FontWeight.w500,
+                                  fontWeight: FontWeight.bold,
                                   color: Palette.greyFontColour,
                                   fontFamily: kRaleway,
-                                  fontSize: 15.sp
+                                  fontSize: 16.sp
                               ),),
                             ),
                             TextButton(
                               onPressed: () {
-                                Navigator.of(ctx).pop();
+                                Navigate.to(const CancelReceiptPage());
                               },
                               child: Text("Confirm",style: TextStyle(
-                                  fontWeight: FontWeight.w500,
+                                  fontWeight: FontWeight.bold,
                                   color: Palette.redColor,
                                   fontFamily: kRaleway,
-                                  fontSize: 15.sp),),
+                                  fontSize: 16.sp),),
                             ),
                           ],
                         ),
@@ -768,7 +769,7 @@ class _PendingPageState extends State<PendingPage> {
                       borderRadius: BorderRadius.circular(20)),
                   child: TextButton(
                     onPressed: () {
-                      Navigate.to(const CancelReceiptPage());
+                      Navigate.to(const PaymentLinkPage());
                     },
                     child: Text(
                       "Send payment reminder",
